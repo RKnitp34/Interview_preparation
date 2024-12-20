@@ -1,0 +1,19 @@
+Here’s a list of **technical topics** based on the responsibilities mentioned:
+
+1. **NLP/GenAI Project Implementation**  
+2. **Entity Extraction from Large Documents** (Legal, Contract, Claim, Medical)  
+3. **GenAI APIs** (Azure OpenAI, Amazon Bedrock, Google Gemini, Anthropic Claude)  
+4. **NLP Terminologies** (Sentiment Analysis, Entity Extraction, Topic Modeling)  
+5. **Cloud Cognitive Services** (Azure Doc Intelligence, Google Doc Intelligence, AWS Textract)  
+6. **Building LLM Applications for Information Retrieval**  
+7. **LangChain/Vector DBs** (For Information Retrieval and Deployment)  
+8. **GPT Architecture**  
+9. **Open-source Models** (LLaMA, Mistral)  
+10. **Classical NLP Libraries** (NLTK, spaCy)  
+11. **Modular Code for Production**  
+12. **Advanced NLP Frameworks** (Keras, Transformers)  
+13. **Neural Networks for Text Processing**  
+14. **NLP Algorithms** (BERT, GPT, RNN)  
+15. **GenAI Trends and Recent Model Advancements**  
+16. **REST APIs**  
+17. **API Frameworks** (Flask, FastAPI)
