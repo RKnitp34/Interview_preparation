@@ -1,0 +1,39 @@
+-- Pandas and SQL
+
+1.Dense Rank in Pandas
+df['rank'] = df['score'].rank(method='dense',ascending=False)
+
+2.Consecutive Numbers 
+  - Using Lead and Lag:
+    - Logic: We have to calculate 3 consecutive numbers (if num=prev and prev=after means all three are same) 
+        select distinct num  as ConsecutiveNums from (
+        select num,lag(num) over() as prev, lead(num) over() as after from logs ) as a 
+        where num=prev and prev=after 
+
+   
+  - Using ID columns: 
+    - Logic: will create three table t1,t2,t3. if t1.id = t2.id+1 and t2.id = t3.id+1 and t1.num=t2.num and t2.num=t3.num meaning 
+      if t1.id = 3, t2.id = 2 and t3.id = 1 and all are equal means we have 3 consecutives number similar for 5 consecutives as well 
+
+     SELECT DISTINCT(t1.num) AS ConsecutiveNums
+      FROM logs t1, logs t2, logs t3, logs t4, logs t5
+      WHERE t1.id = t2.id + 1
+        AND t2.id = t3.id + 1
+        AND t3.id = t4.id + 1
+        AND t4.id = t5.id + 1
+        AND t1.num = t2.num
+        AND t2.num = t3.num
+        AND t3.num = t4.num
+        AND t4.num = t5.num
+
+    - If Id columns not there then use Row_Number() over() create id then proceed with same approach. 
+
+    -- Pandas:
+       -- Using Lead and Lag
+ 
+        df['lags'] = df ['num'].shift(1)
+        df['leads'] = df ['num'].shift(-1)
+        mask = (df['num']==df['lags']) & (df['lags'] == df['leads'])
+        return df[mask][['num']].rename(columns = {'num':'ConsecutiveNums'}).drop_duplicates()
+
+ 3. 
