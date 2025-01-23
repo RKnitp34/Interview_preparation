@@ -36,4 +36,10 @@ df['rank'] = df['score'].rank(method='dense',ascending=False)
         mask = (df['num']==df['lags']) & (df['lags'] == df['leads'])
         return df[mask][['num']].rename(columns = {'num':'ConsecutiveNums'}).drop_duplicates()
 
- 3. 
+       -- Using lags and cumsum() sum 
+        -- Basically this cumsum() will give me group True False False True (then it will sum 1 1 1 2 because 2 True encounter here so) 
+        df['change'] = df['num']!=df['num'].shift()
+        df['group'] = df['change'].cumsum()
+        temp_df = df.groupby('group').count().reset_index()
+        return df[df['group'].isin(temp_df[temp_df['change']>=3]['group'])][['num']].rename(columns = {'num':'ConsecutiveNums'}).drop_duplicates()
+
